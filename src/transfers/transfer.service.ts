@@ -47,10 +47,20 @@ export class TransfersService {
         recipient,
         amount,
       );
+      // Update and cache balances
+      await this.usersService.updateUserBalance(sender.id, sender.balance);
+      await this.usersService.updateUserBalance(
+        recipient.id,
+        recipient.balance,
+      );
       return transfer;
     } catch (error) {
       console.error(error);
       throw new InternalServerErrorException('Transfer failed');
+    } finally {
+      // Clear balance cache for both sender and recipient after the operation
+      await this.usersService.clearCacheForUser(sender.id);
+      await this.usersService.clearCacheForUser(recipient.id);
     }
   }
 

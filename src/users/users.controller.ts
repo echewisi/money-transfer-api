@@ -10,7 +10,6 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard';
-import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { UserEntity } from './entities/user.entity';
 
 @Controller('users')
@@ -40,7 +39,7 @@ export class UsersController {
     // Return only public details
     return {
       username: user.username,
-      email: user.id,
+      user_id: user.id,
     };
   }
 }
