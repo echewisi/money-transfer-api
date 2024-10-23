@@ -5,7 +5,6 @@ import {
   Inject,
 } from '@nestjs/common';
 import { DataSource, QueryRunner } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { TransfersRepository } from './transfer.repository';
 import { UsersService } from '../users/users.service';
 import { CreateTransferDto } from './dto/create-transfer.dto';
@@ -15,7 +14,6 @@ import { TransferEntity } from './entities/transfer.entity';
 @Injectable()
 export class TransfersService {
   constructor(
-    @InjectRepository(TransfersRepository)
     private readonly transfersRepository: TransfersRepository,
     private readonly usersService: UsersService,
     @Inject(DataSource) private readonly dataSource: DataSource,
