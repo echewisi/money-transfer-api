@@ -85,17 +85,9 @@ Make sure you have the following installed on your machine:
    http://localhost:3000/api/docs
    ```
 
-### Running with Docker
 
-If you want to run the application using Docker, follow these steps:
 
-1. Build and start the Docker containers:
-
-   ```bash
-   docker-compose up --build
-   ```
-
-2. The API should now be running on `http://localhost:3000`.
+7. The API should now be running on `http://localhost:3000`.
 
 ### Running Tests
 
@@ -106,6 +98,7 @@ npm run test
 ```
 
 ## API Endpoints
+refer to the ```requests.http``` to make test requests to these endpoints
 
 - **POST /auth/register**: Register a new user.
 - **POST /auth/login**: Log in and retrieve a JWT token.

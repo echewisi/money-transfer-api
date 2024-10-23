@@ -1,0 +1,75 @@
+# 1. User Registration (AuthController)
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "password": "password123",
+  "email": "john.doe@example.com"
+}
+
+###
+
+# 2. User Login (AuthController)
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "password": "password123"
+}
+
+###
+
+# 3. Get User Profile (Protected Route) (AuthController)
+POST http://localhost:3000/auth/api/profile
+Authorization: Bearer {{jwt_token}}
+
+###
+
+# 4. Create User (UsersController)
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "username": "jane_doe",
+  "password": "password456",
+  "email": "jane.doe@example.com"
+}
+
+###
+
+# 5. Get User by ID (Protected Route) (UsersController)
+GET http://localhost:3000/users/{{user_id}}
+Authorization: Bearer {{jwt_token}}
+
+###
+
+# 6. Get User by Username (Protected Route) (UsersController)
+GET http://localhost:3000/api/users/:username
+Authorization: Bearer {{jwt_token}}
+
+###
+
+# 7. Transfer Money (Protected Route) (TransfersController)
+POST http://localhost:3000/api/transfers
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "recipientUsername": "jane_doe",
+  "amount": 100.00
+}
+
+###
+
+# 8. Get Transfer History (Protected Route) (TransfersController)
+GET http://localhost:3000/transfers?page=1&limit=10
+Authorization: Bearer {{jwt_token}}
+
+###
+
+# 9. Get Filtered Transfer History (Protected Route) (TransfersController)
+GET http://localhost:3000/transfers?page=1&limit=10&dateFrom=2024-01-01&dateTo=2024-12-31&amountFrom=50&amountTo=500
+Authorization: Bearer {{jwt_token}}
+
